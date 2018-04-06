@@ -1,0 +1,27 @@
+body {
+  background-color: #e2e2e2;
+}
+
+.glyphicon-pencil, .glyphicon-remove, .glyphicon-log-out {
+  font-size: 20px;
+  float: right; 
+  cursor: pointer;
+}
+
+.glyphicon-pencil {
+  color: #7a7d7f;
+}
+
+.glyphicon-remove {
+  color: #e54c3c;
+}
+
+.alerts {
+  width: 50%;
+  float: right;
+  position: relative;
+}
+
+.panel {
+  box-shadow: 2px 2px #bdbdbd;
+}

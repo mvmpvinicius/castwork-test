@@ -1,0 +1,84 @@
+<div uib-alert class="alerts" ng-class="'alert-{{alert_type}}'" dismiss-on-timeout="1500" ng-if="show_alert_inicio" close="closeAlert()">{{alert_msg}}</div>
+<div class="container-fluid" style="width: 50%; padding-top: 5em;">
+	<div class="panel panel-primary">
+		<div class="panel-heading">Bem-Vindo {{user_name}} - <strong>Usuários Cadastrados</strong><span data-toggle="modal" data-target=".md-usuario" class="glyphicon glyphicon-plus" style="margin-top: 0.2em; float: right; cursor: pointer;"></span><span ng-click="logout()" class="glyphicon glyphicon-log-out" style="margin-right: 0.4em; float: right; cursor: pointer;"></span></div>
+		<div class="row" style="padding-top: 1em;">
+			<div class="col-md-10 col-md-offset-1">
+				<input type="text" ng-model="filtro" class="form-control" placeholder="Pesquise aqui!">
+				<table class="table table-striped" at-table at-paginated at-list="filterUsuarios" at-config="config">
+					<thead></thead>
+					<tbody>
+						<tr>
+							<td at-implicit at-sortable at-attribute="nome"></td>
+							<td at-implicit at-sortable at-attribute="login"></td>
+							<td at-implicit at-sortable at-attribute="email"></td>
+							<td>
+								<span class="glyphicon glyphicon-remove" ng-click="deleteUsuario(item.id)"></span>
+								<span class="glyphicon glyphicon-pencil" ng-click="readUsuario(item.id)"></span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<at-pagination at-list="filterUsuarios" at-config="config" style="text-align: center;"></at-pagination>
+				<a href data-toggle="modal" data-target=".md-usuario-pass" style="float: right;">Alterar minha senha</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade md-usuario" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="exampleModalLabel">Cadastrar/Alterar Usuário</h4>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label class="control-label">Nome</label>
+						<input type="text" ng-model="usuario.nome" class="form-control">
+					</div>
+					<div class="form-group">
+						<label class="control-label">Login</label>
+						<input type="text" ng-model="usuario.login" class="form-control">
+					</div>
+					<div class="form-group">
+						<label class="control-label">E-mail</label>
+						<input type="text" ng-model="usuario.email" class="form-control">
+					</div>
+					<div class="form-group" ng-if="acao != 'update'">
+						<label class="control-label">Senha</label>
+						<input type="password" ng-model="usuario.senha" class="form-control">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+				<button type="button" class="btn btn-success" ng-if="acao != 'update'" ng-click="createUsuario()">Salvar</button>
+				<button type="button" class="btn btn-success" ng-if="acao == 'update'" ng-click="updateUsuario()">Salvar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade md-usuario-pass" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="exampleModalLabel">Alterar Senha</h4>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label class="control-label">Nova Senha</label>
+						<input type="password" ng-model="usuario.senha" class="form-control">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+				<button type="button" class="btn btn-success" ng-click="updatePass()">Salvar</button>
+			</div>
+		</div>
+	</div>
+</div>

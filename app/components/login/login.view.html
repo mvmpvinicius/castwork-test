@@ -1,0 +1,25 @@
+<div uib-alert class="alerts" ng-class="'alert-{{alert_type}}'" dismiss-on-timeout="1500" ng-if="show_alert_login" close="closeAlert()">{{alert_msg}}</div>
+<div class="container-fluid" style="width: 25%; padding-top: 5em;">
+	<div class="panel panel-primary">
+		<div class="panel-heading"><strong>Login - CastWork</strong></div>
+		<div class="row" style="padding-top: 1em;">
+			<div class="col-md-10 col-md-offset-1">
+				<form>
+					<div class="form-group">
+						<label class="control-label">Login</label>
+						<input type="text" ng-model="usuario.login" class="form-control">
+					</div>
+					<div class="form-group">
+						<label class="control-label">Senha</label>
+						<input type="password" ng-model="usuario.senha" class="form-control">
+					</div>
+					<div class="btn-group btn-group-justified" role="group">
+						<div class="btn-group" role="group">
+							<button type="button" class="btn btn-success" ng-click="login()" style="margin-bottom: 1em;">Login</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
